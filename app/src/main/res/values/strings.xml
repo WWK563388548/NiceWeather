@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NiceWeather</string>
+    <string name="forecast_text_view">天气预报</string>
 </resources>
