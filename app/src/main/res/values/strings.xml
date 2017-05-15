@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NiceWeather</string>
     <string name="forecast_text_view">天气预报</string>
+    <string name="air_quality_text">空气质量</string>
+    <string name="aqi_text_view">AQI 指数</string>
+    <string name="pm25_text_view">PM2.5 指数</string>
+    <string name="life_suggestion_text">生活建议</string>
 </resources>
