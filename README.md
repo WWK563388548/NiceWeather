@@ -11,4 +11,4 @@ Libraries:
     GSON,
     Glide
 
-![image](https://github.com//WWK563388548/NiceWeather/screenshots/main.png)
+![image](https://github.com/WWK563388548/NiceWeather/tree/master/screenshots/main.png)
