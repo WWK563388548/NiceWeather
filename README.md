@@ -10,3 +10,5 @@ Libraries:
     OkHttp3,
     GSON,
     Glide
+
+![image](https://github.com//WWK563388548/NiceWeather/screenshots/main.png)
