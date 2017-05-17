@@ -20,8 +20,6 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class AutoUpdateService extends Service {
-    public AutoUpdateService() {
-    }
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -30,44 +28,37 @@ public class AutoUpdateService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         updateWeather();
-        updateBingPicture();
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        // millisecond of 8 hours
-        int hours = 12 * 60 * 60 * 1000;
-        long triggerAtTime = SystemClock.elapsedRealtime() + hours;
-        Intent intent1 = new Intent(this, AutoUpdateService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent1, 0);
-        alarmManager.cancel(pendingIntent);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pendingIntent);
-
+        updateBingPic();
+        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        // milliseconds of 8 hours
+        int anHour = 8 * 60 * 60 * 1000;
+        long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
+        Intent i = new Intent(this, AutoUpdateService.class);
+        PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
+        manager.cancel(pi);
+        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
         return super.onStartCommand(intent, flags, startId);
     }
 
-    // Update information of weather
-    private void updateWeather() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String weatherString = sharedPreferences.getString("weather", null);
+    /**
+     * 更新天气信息。
+     */
+    private void updateWeather(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String weatherString = prefs.getString("weather", null);
         if (weatherString != null) {
-            // Handle data when we have cache
+            // Handle data of weather when we have cache
             Weather weather = Utility.handleWeatherResponse(weatherString);
             String weatherId = weather.basic.weatherId;
-
-            String weatherUrl = "http://guolin.tech/api/weather?cityid=" +
-                    weatherId + "&key=781bb1ebc0df44ebaf0108f46a1a7661";
+            String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=bc0418b57b2d4918819d3974ac1285d9";
             HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
-
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseText = response.body().string();
                     Weather weather = Utility.handleWeatherResponse(responseText);
-
                     if (weather != null && "ok".equals(weather.status)) {
-                        SharedPreferences.Editor editor = PreferenceManager
-                                .getDefaultSharedPreferences(AutoUpdateService.this).edit();
+                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
                         editor.putString("weather", responseText);
                         editor.apply();
                     }
@@ -81,18 +72,17 @@ public class AutoUpdateService extends Service {
         }
     }
 
-    // Update the pictures of Bing
-    private void updateBingPicture() {
-
-        String requestBingPicture = "http://guolin.tech/api/bing_pic";
-        HttpUtil.sendOkHttpRequest(requestBingPicture, new Callback() {
-
+    /**
+     * 更新必应每日一图
+     */
+    private void updateBingPic() {
+        String requestBingPic = "http://guolin.tech/api/bing_pic";
+        HttpUtil.sendOkHttpRequest(requestBingPic, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String bingPicture = response.body().string();
-                SharedPreferences.Editor editor = PreferenceManager
-                        .getDefaultSharedPreferences(AutoUpdateService.this).edit();
-                editor.putString("bing_pic", bingPicture);
+                String bingPic = response.body().string();
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
+                editor.putString("bing_pic", bingPic);
                 editor.apply();
             }
 
@@ -102,4 +92,5 @@ public class AutoUpdateService extends Service {
             }
         });
     }
+
 }
