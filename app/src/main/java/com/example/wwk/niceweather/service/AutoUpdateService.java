@@ -42,7 +42,7 @@ public class AutoUpdateService extends Service {
     }
 
     /**
-     * 更新天气信息。
+     * Update data of weather
      */
     private void updateWeather(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -73,7 +73,7 @@ public class AutoUpdateService extends Service {
     }
 
     /**
-     * 更新必应每日一图
+     * Update pictures from Bing
      */
     private void updateBingPic() {
         String requestBingPic = "http://guolin.tech/api/bing_pic";

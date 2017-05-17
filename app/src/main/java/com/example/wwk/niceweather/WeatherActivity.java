@@ -154,7 +154,7 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.apply();
                             showWeatherInfo(weather);
                         } else {
-                            Toast.makeText(WeatherActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WeatherActivity.this, R.string.request_failed, Toast.LENGTH_SHORT).show();
                         }
                         swipeRefresh.setRefreshing(false);
                     }
@@ -167,7 +167,7 @@ public class WeatherActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(WeatherActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeatherActivity.this, R.string.request_failed, Toast.LENGTH_SHORT).show();
                         swipeRefresh.setRefreshing(false);
                     }
                 });
@@ -244,9 +244,9 @@ public class WeatherActivity extends AppCompatActivity {
             pm25Text.setText(weather.aqi.city.pm25);
         }
 
-        String comfort = "舒适度：" + weather.suggestion.comfort.info;
-        String carWash = "洗车指数：" + weather.suggestion.carWash.info;
-        String sport = "运动建议：" + weather.suggestion.sport.info;
+        String comfort = getString(R.string.comfort) + weather.suggestion.comfort.info;
+        String carWash = getString(R.string.car_wash) + weather.suggestion.carWash.info;
+        String sport = getString(R.string.sport_suggestion) + weather.suggestion.sport.info;
 
         comfortText.setText(comfort);
         carWashText.setText(carWash);

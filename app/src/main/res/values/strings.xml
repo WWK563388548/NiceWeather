@@ -5,4 +5,11 @@
     <string name="aqi_text_view">AQI 指数</string>
     <string name="pm25_text_view">PM2.5 指数</string>
     <string name="life_suggestion_text">生活建议</string>
+    <string name="provinces_title_text">中国</string>
+    <string name="fail_to_load">加载失败</string>
+    <string name="progress_dialog_message">加载中...</string>
+    <string name="request_failed">获取天气信息失败</string>
+    <string name="comfort">舒适度：</string>
+    <string name="car_wash">洗车指数：</string>
+    <string name="sport_suggestion">运动建议：</string>
 </resources>

@@ -137,7 +137,7 @@ public class SelectAreaFragment extends Fragment {
      * if there are not data, then query from server.
      */
     private void queryProvinces() {
-        titleText.setText("中国");
+        titleText.setText(R.string.provinces_title_text);
         backButton.setVisibility(View.GONE);
 
         provinceList = DataSupport.findAll(Province.class);
@@ -251,7 +251,7 @@ public class SelectAreaFragment extends Fragment {
                     @Override
                     public void run() {
                         closeProgressDialog();
-                        Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.fail_to_load, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -263,7 +263,7 @@ public class SelectAreaFragment extends Fragment {
 
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("加载中...");
+            progressDialog.setMessage(getString(R.string.progress_dialog_message));
             progressDialog.setCanceledOnTouchOutside(false);
         }
         progressDialog.show();
