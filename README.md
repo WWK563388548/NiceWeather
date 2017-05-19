@@ -11,6 +11,7 @@ API:https://www.heweather.com/documents
     GSON,
     Glide
 ## screenshots
-![](screenshots/main.png) ![](screenshots/suggestion.png) ![](drawer.png)
-Pictures of background are come from Bing:https://www.bing.com/
+![](screenshots/main.png) ![](screenshots/suggestion.png) ![](screenshots/drawer.png)
+## Thanks
+Pictures of background are getting from Bing:https://www.bing.com/
 
