@@ -1,18 +1,16 @@
 # NiceWeather
 An app for displays weather in China
 
-Environment: Android Studio 2.2, Java 8
+Environment: Android Studio 2.2, Java
 
 API:https://www.heweather.com/documents
 
-Libraries:
+## Libraries:
     LitePal,
     OkHttp3,
     GSON,
     Glide
-
-![image](http://github.com/WWK563388548/NiceWeather/raw/master/screenshots/main.png)
-![image](http://github.com/WWK563388548/NiceWeather/raw/master/screenshots/suggestion.png)
-![image](http://github.com/WWK563388548/NiceWeather/raw/master/screenshots/drawer.png)
+## screenshots
+![](screenshots/main.png) ![](screenshots/suggestion.png) ![](drawer.png)
 Pictures of background are come from Bing:https://www.bing.com/
 
