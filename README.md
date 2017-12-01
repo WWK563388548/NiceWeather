@@ -1,5 +1,7 @@
 # NiceWeather
 An app for displays weather in China
+Completed function that app can automatic changing background image everyday.
+All of this background image is automatic getting from image of Bing everyday.
 
 Environment: Android Studio 2.2, Java
 
